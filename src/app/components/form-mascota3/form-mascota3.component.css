@@ -1,0 +1,121 @@
+:root {
+    --colorTextos: #e65a5a67;
+    background: -webkit-linear-gradient(to right, #ff00ff80, #61006180);
+    background: linear-gradient(to right, #ff00ff80, #61006180);
+}
+
+*,
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto';
+    background: -webkit-linear-gradient(to right, #61006190, #D38312);
+    background: linear-gradient(to right, #61006190, #D38312);
+    height: 680px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+    font-weight: 500;
+}
+
+.span_ {
+    color: #ff00ff90;
+}
+
+form {
+    background: #fff;
+    padding: 50px 0;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+}
+
+.form {
+    width: 100%;
+    margin: auto;
+}
+
+form .grupo {
+    position: relative;
+    margin: 45px;
+}
+
+input {
+    background: none;
+    color: #00000070;
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid rgba(94, 93, 93);
+}
+
+input:focus {
+    outline: none;
+    color: #00000090;
+}
+
+label {
+    color: #000000;
+    font-size: 16px;
+    position: absolute;
+    left: 5px;
+    top: 10px;
+    transition: 0.5s ease all;
+    pointer-events: none;
+}
+
+input:focus~label,
+input:valid~label {
+    top: -14px;
+    font-size: 13px;
+}
+
+.barra {
+    position: relative;
+    display: block;
+}
+
+.barra::before {
+    content: "";
+    height: 2px;
+    width: 0%;
+    bottom: 0;
+    position: absolute;
+    background: linear-gradient(to right, #A83279, #D38312);
+    transition: 0.3s ease width;
+    left: 0;
+}
+
+input:focus~.barra::before {
+    width: 100%;
+}
+
+.btn-form {
+    font-family: 'Roboto';
+    background: #D38312;
+    background: -webkit-linear-gradient(to right, #ff00ff80, #61006190);
+    background: linear-gradient(to right, #ff00ff80, #61006190);
+    border: none;
+    border-radius: 0px 5px 5px;
+    display: inline-block;
+    width: 30%;
+    margin: 8px auto;
+    color: #fff;
+    height: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    position: relative;
+    margin-left: 38px;
+    margin-right: 20px;
+    outline: none;
+}

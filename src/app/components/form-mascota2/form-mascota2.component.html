@@ -1,0 +1,27 @@
+<body>
+    <form action="" method="" id="form">
+        <div class="form">
+            <h1><span class="span_">M</span>ascota</h1>
+            <div class="grupo">
+                <input type="text" name="" id="raza" required [(ngModel)]="mascota.raza" [ngModelOptions]="{standalone: true}"><span class="barra"></span>
+                <label for="raza">Raza</label>
+            </div>
+            <div class="grupo">
+                <input type="text" name="" id="color" required [(ngModel)]="mascota.color" [ngModelOptions]="{standalone: true}"><span class="barra"></span>
+                <label for="color">Color</label>
+            </div>
+            <div class="grupo">
+                <input type="text" name="" id="sexo" required [(ngModel)]="mascota.sexo" [ngModelOptions]="{standalone: true}"><span class="barra"></span>
+                <label for="sexo">Sexo</label>
+            </div>
+            <div class="grupo">
+                <input type="number" name="" id="edad" required [(ngModel)]="mascota.edad" [ngModelOptions]="{standalone: true}"><span class="barra"></span>
+                <label for="edad">Edad (Meses)</label>
+            </div>
+
+            <button type="submit" class="btn-form" (click)="back()">Atras</button>
+            <button type="submit" class="btn-form" (click)="setDatosMascota()">Seguir</button>
+
+        </div>
+    </form>
+</body>
