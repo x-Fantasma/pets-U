@@ -4,6 +4,7 @@ import { FormMascota2Component } from '../form-mascota2/form-mascota2.component'
 import { Router } from '@angular/router';
 import { ComunicacionService } from '../../services/comunicacion/comunicacion.service';
 import { empty } from 'rxjs';
+import { ValidateForms } from '../../model/validate-forms';
 
 @Component({
   selector: 'app-form-mascota1',
@@ -26,27 +27,12 @@ export class FormMascota1Component implements OnInit {
     }
   }
 
-  validarFormulario(): boolean {
-    let valido = true;
-    if (!Boolean(this.mascota.nroChip)){
-      valido = false;
-      alert('Indique el numero de microchip');
-    }
-    if (!Boolean(this.mascota.nombre)){
-      valido = false;
-      alert('Indique el nombre');
-    }
-    if (!Boolean(this.mascota.especie)){
-      valido = false;
-      alert('Indique la especie');
-    }
-    return valido;
-  }
-
   setDatosMascota(){
-    if (this.validarFormulario()){
+    if (ValidateForms.validate(0, 2, this.mascota)){
       this.comunicacionService.sendMascota(this.mascota);
       this.router.navigate(['form-mascota2']);
+    }else{
+      ValidateForms.throwMessageInfo('', 'Complete los campos requeridos * ');
     }
   }
 

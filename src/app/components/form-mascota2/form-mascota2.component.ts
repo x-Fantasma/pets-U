@@ -2,6 +2,7 @@ import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { Mascota } from '../../model/mascota';
 import { Router } from '@angular/router';
 import { ComunicacionService } from '../../services/comunicacion/comunicacion.service';
+import { ValidateForms } from '../../model/validate-forms';
 
 @Component({
   selector: 'app-form-mascota2',
@@ -19,31 +20,12 @@ export class FormMascota2Component implements OnInit {
     this.mascota = this.comunicacionService.mascota;
   }
 
-  validarFormulario(): boolean {
-    let valido = true;
-    if (!Boolean(this.mascota.raza)){
-      valido = false;
-      alert('Indique la raza');
-    }
-    if (!Boolean(this.mascota.color)){
-      valido = false;
-      alert('Indique el color');
-    }
-    if (!Boolean(this.mascota.sexo)){
-      valido = false;
-      alert('Indique el sexo');
-    }
-    if (!Boolean(this.mascota.edad)){
-      valido = false;
-      alert('Indique la edad');
-    }
-    return valido;
-  }
-
   setDatosMascota(){
-    if (this.validarFormulario()){
+    if (ValidateForms.validate(2, 5, this.mascota)){
       this.comunicacionService.sendMascota(this.mascota);
       this.router.navigate(['form-mascota3']);
+    }else{
+      ValidateForms.throwMessageInfo('', 'Complete los campos requeridos  * ');
     }
   }
 

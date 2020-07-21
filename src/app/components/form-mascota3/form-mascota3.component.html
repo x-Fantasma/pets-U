@@ -8,7 +8,7 @@
             </div>
             <div class="grupo">
                 <input type="text" name="" id="tamano" required [(ngModel)]="mascota.tamano" [ngModelOptions]="{standalone: true}"><span class="barra"></span>
-                <label for="tamano">Tamaño</label>
+                <label for="tamano">Tamaño <span class="span-required">*</span></label>
             </div>
             <div class="grupo">
                 <input type="text" name="" id="personalidad" required [(ngModel)]="mascota.personalidad" [ngModelOptions]="{standalone: true}"><span class="barra"></span>
@@ -16,7 +16,7 @@
             </div>
             <div class="grupo">
                 <input type="text" name="" id="estado" required [(ngModel)]="mascota.estado" [ngModelOptions]="{standalone: true}"><span class="barra"></span>
-                <label for="estado">Estado</label>
+                <label for="estado">Estado <span class="span-required">*</span></label>
             </div>
 
             <button type="submit" class="btn-form" (click)="back()">Atras</button>

@@ -28,7 +28,7 @@ h1 {
 }
 
 .span_ {
-    color: #ff00ff90;
+    color: #c20cc280;
 }
 
 form {
@@ -102,7 +102,6 @@ input:focus~.barra::before {
 
 .btn-form {
     font-family: 'Roboto';
-    background: #D38312;
     background: -webkit-linear-gradient(to right, #ff00ff80, #61006190);
     background: linear-gradient(to right, #ff00ff80, #61006190);
     border: none;
@@ -115,7 +114,11 @@ input:focus~.barra::before {
     font-size: 16px;
     cursor: pointer;
     position: relative;
-    margin-left: 38px;
-    margin-right: 20px;
+    margin-right: 9px;
+    margin-left: 40px;
     outline: none;
+}
+
+.span-required {
+    color: red;
 }

@@ -28,7 +28,7 @@ h1 {
 }
 
 .span_ {
-    color: #ff00ff90;
+    color: #c20cc280;
 }
 
 form {
@@ -102,20 +102,22 @@ input:focus~.barra::before {
 
 .btn-form {
     font-family: 'Roboto';
-    background: #D38312;
     background: -webkit-linear-gradient(to right, #ff00ff80, #61006190);
     background: linear-gradient(to right, #ff00ff80, #61006190);
     border: none;
     border-radius: 0px 5px 5px;
     display: inline-block;
+    margin-right: 9px;
+    margin-left: 40px;
     width: 30%;
-    margin: 8px auto;
     color: #fff;
     height: 30px;
     font-size: 16px;
     cursor: pointer;
     position: relative;
-    margin-left: 37px;
-    margin-right: 20px;
     outline: none;
+}
+
+.span-required {
+    color: red;
 }

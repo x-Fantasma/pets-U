@@ -3,7 +3,7 @@ import { Mascota } from '../../model/mascota';
 import { Router } from '@angular/router';
 import { ComunicacionService } from '../../services/comunicacion/comunicacion.service';
 import { MascotaServiceService } from '../../services/mascota-service.service';
-import { throwError } from 'rxjs';
+import { ValidateForms } from '../../model/validate-forms';
 
 @Component({
   selector: 'app-form-mascota3',
@@ -21,37 +21,39 @@ export class FormMascota3Component implements OnInit {
     this.mascota = this.comunicacionService.mascota;
   }
 
-  validarFormulario(): boolean {
-    let valido = true;
-    if (!Boolean(this.mascota.tamano)){
-      valido = false;
-      alert('Indique lel tamaño');
-    }
-    if (!Boolean(this.mascota.personalidad)){
-      valido = false;
-      alert('Indique la personalidad');
-    }
-    if (!Boolean(this.mascota.estado)){
-      valido = false;
-      alert('Indique el estado');
+  setDatosMascota(): boolean{
+    let valido = false;
+    if (ValidateForms.validate(5, 7, this.mascota)){
+      this.comunicacionService.sendMascota(this.mascota);
+      valido = true;
+    }else{
+      ValidateForms.throwMessageInfo('', 'Complete los campos requeridos  * ');
     }
     return valido;
   }
 
-  setDatosMascota(){
-    if (this.validarFormulario()){
-      this.comunicacionService.sendMascota(this.mascota);
-      this.router.navigate(['form-mascota3']);
-    }
-  }
-
   saveMascota(): void {
-    this.setDatosMascota();
-    this.mascotaService.saveMascota(this.mascota)
-    .subscribe(data => {
-      alert('Se ingreso la mascota');
-      this.router.navigate(['form-historiaClinica']);
-    });
+    if (this.setDatosMascota()) {
+      this.mascotaService.saveMascota(this.mascota)
+      .subscribe(data => {
+        if (!Boolean(this.mascota.nombre)){
+          ValidateForms.throwMessageSuccess('', 'Se ingreso ' + this.mascota.nroChip);
+        }else{
+          ValidateForms.throwMessageSuccess('', 'Se ingreso ' + this.mascota.nombre);
+        }
+        this.router.navigate(['form-historiaClinica']);
+      }, error => {
+        if (error === 400){
+          ValidateForms.throwMessageInfo('', 'La edad no es valida');
+        }
+        if (error === 409){
+          ValidateForms.throwMessageInfo('', 'La mascota ya se encuentra ingresada');
+        }
+        if (error === 0){
+          ValidateForms.throwMessageError('Algo salio mal!', '');
+        }
+      });
+    }
   }
 
   back() {

@@ -4,7 +4,7 @@
             <h1><span class="span_">M</span>ascota</h1>
             <div class="grupo">
                 <input type="text" name="" id="nroChip" required [(ngModel)]="mascota.nroChip" [ngModelOptions]="{standalone: true}"><span class="barra"></span>
-                <label for="nroChip">Numero de microchip</label>
+                <label for="nroChip">Numero de microchip <span class="span-required">*</span></label>
             </div>
             <div class="grupo">
                 <input type="text" name="" id="nombre" required [(ngModel)]="mascota.nombre" [ngModelOptions]="{standalone: true}"><span class="barra"></span>
@@ -12,7 +12,7 @@
             </div>
             <div class="grupo">
                 <input type="text" name="" id="especie" required [(ngModel)]="mascota.especie" [ngModelOptions]="{standalone: true}"><span class="barra"></span>
-                <label for="especie">Especie</label>
+                <label for="especie">Especie <span class="span-required">*</span></label>
             </div>
             <div class="grupo">
                 <input type="number" name="" id="peso" required [(ngModel)]="mascota.peso" [ngModelOptions]="{standalone: true}"><span class="barra"></span>
