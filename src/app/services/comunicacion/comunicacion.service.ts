@@ -9,7 +9,9 @@ import {Router } from '@angular/router';
 export class ComunicacionService {
 
   mascota: Mascota;
-  private enviarMensajeSubject = new Subject<Mascota>();
+  sex: boolean;
+  especie: boolean;
+  private enviarMensajeSubject = new Subject<any>();
   enviarMensajeObservable = this.enviarMensajeSubject.asObservable();
 
   constructor(private router: Router) { }
@@ -17,6 +19,16 @@ export class ComunicacionService {
   sendMascota(mascota: Mascota) {
     this.mascota = mascota;
     this.enviarMensajeSubject.next(mascota);
+  }
+
+  setSex(s: boolean){
+    this.sex = s;
+    this.enviarMensajeSubject.next(s);
+  }
+
+  setEspecie(e: boolean){
+    this.especie = e;
+    this.enviarMensajeSubject.next(e);
   }
 
 }

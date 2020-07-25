@@ -48,6 +48,11 @@ form .grupo {
     margin: 45px;
 }
 
+form .radio {
+    position: relative;
+    margin: 45px;
+}
+
 input {
     background: none;
     color: #00000070;
@@ -64,6 +69,38 @@ input:focus {
     color: #00000090;
 }
 
+.span-sex {
+    position: relative;
+    display: block;
+    margin-top: 10px;
+}
+
+.span-sex::before {
+    content: "";
+    height: 2px;
+    bottom: 0;
+    position: absolute;
+    background: linear-gradient(to right, #A83279, #D38312);
+    transition: 0.3s ease width;
+    left: 0;
+}
+
+input:not(checked)~.span-sex::before {
+    transition: 0.3s;
+    width: 45%;
+}
+
+input:checked~.span-sex::before {
+    margin-left: 130px;
+    width: 45%;
+}
+
+#check {
+    cursor: pointer;
+    position: relative;
+    bottom: 7px;
+}
+
 label {
     color: #000000;
     font-size: 16px;
@@ -72,6 +109,12 @@ label {
     top: 10px;
     transition: 0.5s ease all;
     pointer-events: none;
+}
+
+#label {
+    position: relative;
+    left: -8px;
+    float: right;
 }
 
 input:focus~label,

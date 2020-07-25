@@ -14,11 +14,32 @@ import { ValidateForms } from '../../model/validate-forms';
 export class FormMascota1Component implements OnInit {
 
   mascota: Mascota = new Mascota();
+  e: boolean;
+  v: boolean;
 
   constructor(private router: Router, private comunicacionService: ComunicacionService) { }
 
   ngOnInit(): void {
     this.validarMascota();
+    this.validarCheck();
+  }
+
+  validarCheck() {
+    if (this.comunicacionService.especie === true){
+      this.v = this.comunicacionService.especie;
+    }else{
+      this.v = this.e;
+    }
+  }
+
+  setEspecie(){
+    if (this.v){
+      this.mascota.especie = 'Felino';
+      this.comunicacionService.setEspecie(true);
+    }else{
+      this.mascota.especie = 'Can';
+      this.comunicacionService.setEspecie(false);
+    }
   }
 
   validarMascota() {

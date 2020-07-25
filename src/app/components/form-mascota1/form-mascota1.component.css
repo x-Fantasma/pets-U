@@ -43,7 +43,8 @@ form {
     margin: auto;
 }
 
-form .grupo {
+form .grupo,
+form .radio {
     position: relative;
     margin: 45px;
 }
@@ -120,4 +121,42 @@ input:focus~.barra::before {
 
 .span-required {
     color: red;
+}
+
+.span-especie {
+    position: relative;
+    display: block;
+    margin-top: 10px;
+}
+
+.span-especie::before {
+    content: "";
+    height: 2px;
+    bottom: 0;
+    position: absolute;
+    background: linear-gradient(to right, #A83279, #D38312);
+    transition: 0.3s ease width;
+    left: 0;
+}
+
+input:not(checked)~.span-especie::before {
+    transition: 0.3s;
+    width: 45%;
+}
+
+input:checked~.span-especie::before {
+    margin-left: 130px;
+    width: 45%;
+}
+
+#check {
+    position: relative;
+    bottom: 7px;
+    cursor: pointer;
+}
+
+#label-felino {
+    position: relative;
+    left: -8px;
+    float: right;
 }

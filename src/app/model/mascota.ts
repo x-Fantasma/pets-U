@@ -2,11 +2,11 @@ export class Mascota {
 
     nroChip: string;
     nombre: string;
-    especie: string;
+    especie = 'Can';
     peso: number;
     raza: string;
     color: string;
-    sexo: string;
+    sexo = 'Macho';
     edad: number;
     senasParticulares: string;
     tamano: string;

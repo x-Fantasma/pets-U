@@ -1,5 +1,6 @@
 import { Mascota } from './mascota';
 import Swal from 'sweetalert2';
+import { element } from 'protractor';
 
 export class ValidateForms {
 
