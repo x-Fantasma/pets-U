@@ -1,36 +1,72 @@
 import { Mascota } from './mascota';
 import Swal from 'sweetalert2';
-import { element } from 'protractor';
 
-export class ValidateForms {
+export class OptionsForms {
 
 //  NRO_CHIP = 0, ESPECIE = 1, COLOR = 2, SEXO = 3, EDAD = 4, TAMAÑO = 5, ESTADO = 6
 
-    private static list;
+    private  nroChipTest = new RegExp(/^[a-zA-Z0-9\_\-]{1,}$/);   // Letras, numeros, guion y guion_bajo
+    // private static especieTest = new RegExp(/^[a-zA-ZÀ-ÿ\s]{3,}$/);   // Letras y espacios, pueden llevar acentos
+    private  colorTest = new RegExp(/^[a-zA-ZÀ-ÿ\s]{3,}$/);
+    // private  edadTest = new RegExp(/^[0-3]{1,}$/);   // Numeros
+    private  strings = new Array('nroChip', 'color', 'edad');
+    private valido;
 
-    static validate(nroInicio: number, nroCiclo: number, mascota: Mascota): boolean {
-        let valido = true;
-        this.setList(mascota);
+     validateAll(nroInicio: number, nroCiclo: number, mascota: Mascota): boolean {
         for (let i = nroInicio; i < nroCiclo; i++){
-            if (!Boolean(this.list[i])){
-                valido = false;
+            this.validate(this.strings[i], mascota);
+            if (!this.valido) {
+                break;
             }
         }
-        return valido;
+        return this.valido;
     }
 
-    private static setList(mascota: Mascota) {
-        this.list = new Array();
-        this.list[0] = mascota.nroChip;
-        this.list[1] = mascota.especie;
-        this.list[2] = mascota.color;
-        this.list[3] = mascota.sexo;
-        this.list[4] = mascota.edad;
-        this.list[5] = mascota.tamano;
-        this.list[6] = mascota.estado;
+     validate(texto: string, mascota: Mascota) {
+         switch (texto) {
+             case 'nroChip':
+                 if (this.nroChipTest.test(mascota.nroChip) && Boolean(mascota.nroChip)) {
+                    document.getElementById('barra-nroChip').classList.remove('barra-error');
+                    document.getElementById('barra-nroChip').classList.add('barra');
+                    document.querySelector('.grupo .p-nroChip').classList.remove('p-active');
+                    this.valido = true;
+                }else{
+                    document.getElementById('barra-nroChip').classList.add('barra-error');
+                    document.getElementById('barra-nroChip').classList.remove('barra');
+                    document.querySelector('.grupo .p-nroChip').classList.add('p-active');
+                    this.valido = false;
+                }
+                 break;
+            case 'color':
+                    if (this.colorTest.test(mascota.color) && Boolean(mascota.color)) {
+                        document.getElementById('barra-color').classList.remove('barra-error');
+                        document.getElementById('barra-color').classList.add('barra');
+                        document.querySelector('.grupo .p-color').classList.remove('p-active');
+                        this.valido = true;
+                    }else{
+                        document.getElementById('barra-color').classList.add('barra-error');
+                        document.getElementById('barra-color').classList.remove('barra');
+                        document.querySelector('.grupo .p-color').classList.add('p-active');
+                        this.valido = false;
+                    }
+                    break;
+            case 'edad':
+                if (Boolean(mascota.edad)) {
+                    document.getElementById('barra-edad').classList.remove('barra-error');
+                    document.getElementById('barra-edad').classList.add('barra');
+                    document.querySelector('.grupo .p-edad').classList.remove('p-active');
+                    this.valido = true;
+                }else {
+                    document.getElementById('barra-edad').classList.add('barra-error');
+                    document.getElementById('barra-edad').classList.remove('barra');
+                    document.querySelector('.grupo .p-edad').classList.add('p-active');
+                    this.valido = false;
+                }
+                break;
+        }
     }
 
-    static throwMessageInfo(Tittle: string, Text: string): void {
+     throwMessageInfo(Tittle: string, Text: string): void {
         Swal.fire({
             title: Tittle,
             text: Text,
@@ -96,7 +132,7 @@ export class ValidateForms {
         });
     }
 
-    static throwMessageSuccess(Tittle: string, Text: string): void {
+     throwMessageSuccess(Tittle: string, Text: string): void {
         Swal.fire({
             title: Tittle,
             text: Text,
@@ -162,7 +198,7 @@ export class ValidateForms {
         });
     }
 
-    static throwMessageError(Tittle: string, Text: string): void {
+     throwMessageError(Tittle: string, Text: string): void {
         Swal.fire({
             title: Tittle,
             text: Text,
@@ -227,4 +263,5 @@ export class ValidateForms {
             // imageAlt:
         });
     }
+
 }

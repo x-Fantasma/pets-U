@@ -1,10 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Mascota } from '../../model/mascota';
-import { FormMascota2Component } from '../form-mascota2/form-mascota2.component';
 import { Router } from '@angular/router';
 import { ComunicacionService } from '../../services/comunicacion/comunicacion.service';
-import { empty } from 'rxjs';
-import { ValidateForms } from '../../model/validate-forms';
+import { OptionsForms } from '../../model/options-forms';
 
 @Component({
   selector: 'app-form-mascota1',
@@ -13,7 +11,8 @@ import { ValidateForms } from '../../model/validate-forms';
 })
 export class FormMascota1Component implements OnInit {
 
-  mascota: Mascota = new Mascota();
+  mascota = new Mascota();
+  optionsForm = new OptionsForms();
   e: boolean;
   v: boolean;
 
@@ -22,6 +21,10 @@ export class FormMascota1Component implements OnInit {
   ngOnInit(): void {
     this.validarMascota();
     this.validarCheck();
+  }
+
+  validate(e) {
+    this.optionsForm.validate(e.target.name, this.mascota);
   }
 
   validarCheck() {
@@ -49,11 +52,12 @@ export class FormMascota1Component implements OnInit {
   }
 
   setDatosMascota(){
-    if (ValidateForms.validate(0, 2, this.mascota)){
+   const v = this.optionsForm.validateAll(0, 1, this.mascota);
+   if (v) {
       this.comunicacionService.sendMascota(this.mascota);
       this.router.navigate(['form-mascota2']);
     }else{
-      ValidateForms.throwMessageInfo('', 'Complete los campos requeridos * ');
+      this.optionsForm.throwMessageInfo('', 'Complete correctamente los campos');
     }
   }
 

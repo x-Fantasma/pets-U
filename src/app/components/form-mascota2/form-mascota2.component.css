@@ -16,7 +16,7 @@ body {
     font-family: 'Roboto';
     background: -webkit-linear-gradient(to right, #61006190, #D38312);
     background: linear-gradient(to right, #61006190, #D38312);
-    height: 680px;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,6 +25,22 @@ body {
 h1 {
     text-align: center;
     font-weight: 500;
+    margin-bottom: 45px;
+}
+
+p {
+    font-size: 12px;
+    margin-bottom: 0;
+    margin-top: 10px;
+    border: #FF000080 solid;
+    border-radius: 0 0 5px 5px;
+    padding: 10px;
+    background-color: #FF000040;
+    display: none;
+}
+
+.p-active {
+    display: block;
 }
 
 .span_ {
@@ -33,9 +49,13 @@ h1 {
 
 form {
     background: #fff;
-    padding: 50px 0;
+    padding: 50px 0 20px;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
     border-radius: 10px;
+    margin-right: 38%;
+    margin-left: 38%;
+    margin-top: 48px;
+    margin-bottom: 48px;
 }
 
 .form {
@@ -43,11 +63,7 @@ form {
     margin: auto;
 }
 
-form .grupo {
-    position: relative;
-    margin: 45px;
-}
-
+form .grupo,
 form .radio {
     position: relative;
     margin: 45px;
@@ -91,7 +107,7 @@ input:not(checked)~.span-sex::before {
 }
 
 input:checked~.span-sex::before {
-    margin-left: 130px;
+    margin-left: 56%;
     width: 45%;
 }
 
@@ -128,6 +144,11 @@ input:valid~label {
     display: block;
 }
 
+.barra-error {
+    position: relative;
+    display: block;
+}
+
 .barra::before {
     content: "";
     height: 2px;
@@ -135,6 +156,17 @@ input:valid~label {
     bottom: 0;
     position: absolute;
     background: linear-gradient(to right, #A83279, #D38312);
+    transition: 0.3s ease width;
+    left: 0;
+}
+
+.barra-error::before {
+    content: "";
+    height: 2px;
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+    background: red;
     transition: 0.3s ease width;
     left: 0;
 }
@@ -152,6 +184,7 @@ input:focus~.barra::before {
     display: inline-block;
     margin-right: 9px;
     margin-left: 40px;
+    margin-bottom: 8px;
     width: 30%;
     color: #fff;
     height: 30px;
