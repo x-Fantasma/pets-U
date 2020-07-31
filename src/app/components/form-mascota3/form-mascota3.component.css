@@ -52,8 +52,7 @@ form {
     padding: 50px 0 20px;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
     border-radius: 10px;
-    margin-right: 38%;
-    margin-left: 38%;
+    max-width: 323px;
     margin-top: 48px;
     margin-bottom: 48px;
 }
@@ -68,7 +67,8 @@ form .grupo {
     margin: 45px;
 }
 
-input {
+input,
+select {
     background: none;
     color: #00000070;
     font-size: 18px;
@@ -77,9 +77,22 @@ input {
     width: 100%;
     border: none;
     border-bottom: 1px solid rgba(94, 93, 93);
+    outline: none;
 }
 
-input:focus {
+.select {
+    padding-left: 0;
+}
+
+option {
+    color: #000;
+    box-shadow: rgba(0, 0, 0, 0.8);
+    font-size: 14px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
     outline: none;
     color: #00000090;
 }
@@ -94,9 +107,21 @@ label {
     pointer-events: none;
 }
 
+#label-textarea {
+    top: 5px;
+}
+
 input:focus~label,
-input:valid~label {
+input:valid~label,
+select:focus~label,
+select:valid~label {
     top: -14px;
+    font-size: 13px;
+}
+
+textarea:focus~#label-textarea,
+textarea:valid~label#label-textarea {
+    top: -22px;
     font-size: 13px;
 }
 
@@ -132,7 +157,9 @@ input:valid~label {
     left: 0;
 }
 
-input:focus~.barra::before {
+input:focus~.barra::before,
+select:focus~.barra::before,
+textarea:focus~.barra::before {
     width: 100%;
 }
 
@@ -144,18 +171,32 @@ input:focus~.barra::before {
     border-radius: 0px 5px 5px;
     display: inline-block;
     width: 30%;
-    margin: 8px auto;
+    margin-right: 9px;
+    margin-left: 40px;
+    margin-bottom: 8px;
     color: #fff;
     height: 30px;
     font-size: 16px;
     cursor: pointer;
     position: relative;
-    margin-right: 9px;
-    margin-left: 40px;
-    margin-bottom: 8px;
     outline: none;
+    box-shadow: 0 3px 3px #00000060;
 }
 
 .span-required {
     color: red;
+}
+
+#senas {
+    box-sizing: border-box;
+    background: none;
+    color: #00000070;
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    min-height: 90px;
+    outline: none;
+    border: 1px solid rgba(94, 93, 93);
+    border-style: dashed;
 }

@@ -9,7 +9,7 @@ export class OptionsForms {
     // private static especieTest = new RegExp(/^[a-zA-ZÀ-ÿ\s]{3,}$/);   // Letras y espacios, pueden llevar acentos
     private  colorTest = new RegExp(/^[a-zA-ZÀ-ÿ\s]{3,}$/);
     // private  edadTest = new RegExp(/^[0-3]{1,}$/);   // Numeros
-    private  strings = new Array('nroChip', 'color', 'edad');
+    private  strings = new Array('nroChip', 'color', 'edad', 'tamano');
     private valido;
 
      validateAll(nroInicio: number, nroCiclo: number, mascota: Mascota): boolean {
@@ -26,10 +26,10 @@ export class OptionsForms {
          switch (texto) {
              case 'nroChip':
                  if (this.nroChipTest.test(mascota.nroChip) && Boolean(mascota.nroChip)) {
-                    document.getElementById('barra-nroChip').classList.remove('barra-error');
-                    document.getElementById('barra-nroChip').classList.add('barra');
-                    document.querySelector('.grupo .p-nroChip').classList.remove('p-active');
-                    this.valido = true;
+                     document.getElementById('barra-nroChip').classList.remove('barra-error');
+                     document.getElementById('barra-nroChip').classList.add('barra');
+                     document.querySelector('.grupo .p-nroChip').classList.remove('p-active');
+                     this.valido = true;
                 }else{
                     document.getElementById('barra-nroChip').classList.add('barra-error');
                     document.getElementById('barra-nroChip').classList.remove('barra');
@@ -63,6 +63,19 @@ export class OptionsForms {
                     this.valido = false;
                 }
                 break;
+                case 'tamano':
+                    if (mascota.tamano !== 'Elija') {
+                        document.getElementById('barra-tamano').classList.remove('barra-error');
+                        document.getElementById('barra-tamano').classList.add('barra');
+                        document.querySelector('.grupo .p-tamano').classList.remove('p-active');
+                        this.valido = true;
+                    }else{
+                        document.getElementById('barra-tamano').classList.add('barra-error');
+                        document.getElementById('barra-tamano').classList.remove('barra');
+                        document.querySelector('.grupo .p-tamano').classList.add('p-active');
+                        this.valido = false;
+                    }
+                    break;
         }
     }
 

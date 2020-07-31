@@ -52,10 +52,9 @@ form {
     padding: 50px 0 20px;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
     border-radius: 10px;
-    margin-right: 38%;
-    margin-left: 38%;
     margin-top: 48px;
     margin-bottom: 48px;
+    max-width: 323px;
 }
 
 .form {
@@ -63,10 +62,16 @@ form {
     margin: auto;
 }
 
-form .grupo,
-form .radio {
+form .grupo {
     position: relative;
     margin: 45px;
+}
+
+form .radio {
+    position: relative;
+    margin-left: 45px;
+    margin-right: 45px;
+    top: -10px;
 }
 
 input {
@@ -152,6 +157,7 @@ input:focus~.barra::before {
     outline: none;
     border: none;
     border-radius: 0px 5px 5px;
+    box-shadow: 0 3px 3px #00000060;
 }
 
 .span-required {

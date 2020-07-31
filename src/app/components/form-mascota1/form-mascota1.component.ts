@@ -46,7 +46,7 @@ export class FormMascota1Component implements OnInit {
   }
 
   validarMascota() {
-    if (this.comunicacionService.mascota != null){
+    if (Boolean(this.comunicacionService.mascota)){
       this.mascota = this.comunicacionService.mascota;
     }
   }
@@ -57,7 +57,7 @@ export class FormMascota1Component implements OnInit {
       this.comunicacionService.sendMascota(this.mascota);
       this.router.navigate(['form-mascota2']);
     }else{
-      this.optionsForm.throwMessageInfo('', 'Complete correctamente los campos');
+      this.optionsForm.throwMessageInfo('', 'Complete los campos correctamente');
     }
   }
 

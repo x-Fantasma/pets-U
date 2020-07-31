@@ -9,8 +9,8 @@ export class Mascota {
     sexo = 'Macho';
     edad: number;
     senasParticulares: string;
-    tamano: string;
+    tamano = 'Elija';
     personalidad: string;
-    estado: string;
+    estado = 'En albergue';
 
 }

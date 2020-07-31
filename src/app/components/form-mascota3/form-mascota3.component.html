@@ -3,20 +3,31 @@
         <div class="form">
             <h1><span class="span_">M</span>ascota</h1>
             <div class="grupo">
-                <input type="text" name="" id="senas" required [(ngModel)]="mascota.senasParticulares" [ngModelOptions]="{standalone: true}"><span class="barra"></span>
-                <label for="senas">Señas particulares</label>
-            </div>
-            <div class="grupo">
-                <input type="text" name="" id="tamano" required [(ngModel)]="mascota.tamano" [ngModelOptions]="{standalone: true}"><span class="barra"></span>
-                <label for="tamano">Tamaño <sup class="span-required">*</sup></label>
+                <select class="select" id="select-tamano" name="tamano" [(ngModel)]="mascota.tamano" [ngModelOptions]="{standalone: true}" (change)="validate($event)">
+                    <option disabled>Elija</option>
+                    <option *ngFor="let tamano of tamanos">{{tamano}}</option>
+                </select>
+                <label for="select-tamano">Tamaño <sup class="span-required">*</sup></label>
+                <span id="barra-tamano" class="barra"></span>
+                <p class="p-tamano">Seleccione el tamaño.</p>
             </div>
             <div class="grupo">
                 <input type="text" name="" id="personalidad" required [(ngModel)]="mascota.personalidad" [ngModelOptions]="{standalone: true}"><span class="barra"></span>
                 <label for="personalidad">Personalidad</label>
             </div>
             <div class="grupo">
-                <input type="text" name="" id="estado" required [(ngModel)]="mascota.estado" [ngModelOptions]="{standalone: true}"><span id="barra-estado" class="barra"></span>
-                <label for="estado">Estado <sup class="span-required">*</sup></label>
+                <select class="select" id="select-estado" name="estado" [(ngModel)]="mascota.estado" [ngModelOptions]="{standalone: true}">
+                    <option *ngFor="let estado of estados">
+                        {{estado}}
+                    </option>
+                </select>
+                <label for="select-estado">Estado <sup class="span-required">*</sup></label>
+                <span class="barra"></span>
+
+            </div>
+            <div class="grupo">
+                <textarea type="text" name="" id="senas" required [(ngModel)]="mascota.senasParticulares" [ngModelOptions]="{standalone: true}"></textarea><span class="barra"></span>
+                <label id="label-textarea" for="senas">Señas particulares</label>
             </div>
 
             <button type="submit" class="btn-form" (click)="back()">Atras</button>

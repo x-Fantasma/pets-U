@@ -13,7 +13,9 @@ import { OptionsForms } from '../../model/options-forms';
 export class FormMascota3Component implements OnInit {
 
   mascota: Mascota;
-  optionsForms = new OptionsForms();
+  optionsForm = new OptionsForms();
+  estados = new Array('En albergue', 'Adoptado', 'Muerto');
+  tamanos = new Array('Pequeño', 'Mediano', 'Grande');
 
   constructor(private router: Router, private comunicacionService: ComunicacionService, private mascotaService: MascotaServiceService) {
   }
@@ -22,13 +24,18 @@ export class FormMascota3Component implements OnInit {
     this.mascota = this.comunicacionService.mascota;
   }
 
+  validate(e){
+    this.optionsForm.validate(e.target.name, this.mascota);
+  }
+
   setDatosMascota(): boolean{
     let valido = false;
-    if (this.optionsForms.validateAll(3, 2, this.mascota)){
+    const v = this.optionsForm.validateAll(3, 4, this.mascota);
+    if (v){
       this.comunicacionService.sendMascota(this.mascota);
       valido = true;
     }else{
-      this.optionsForms.throwMessageInfo('', 'Complete los campos requeridos  * ');
+      this.optionsForm.throwMessageInfo('', 'Complete los campos correctamente');
     }
     return valido;
   }
@@ -38,20 +45,20 @@ export class FormMascota3Component implements OnInit {
       this.mascotaService.saveMascota(this.mascota)
       .subscribe(data => {
         if (!Boolean(this.mascota.nombre)){
-          this.optionsForms.throwMessageSuccess('', 'Se ingreso ' + this.mascota.nroChip);
+          this.optionsForm.throwMessageSuccess('', 'Se ingreso ' + this.mascota.nroChip);
         }else{
-          this.optionsForms.throwMessageSuccess('', 'Se ingreso ' + this.mascota.nombre);
+          this.optionsForm.throwMessageSuccess('', 'Se ingreso ' + this.mascota.nombre);
         }
         this.router.navigate(['form-historiaClinica']);
       }, error => {
         if (error === 400){
-          this.optionsForms.throwMessageInfo('', 'La edad no es valida');
+          this.optionsForm.throwMessageInfo('', 'La edad no es valida');
         }
         if (error === 409){
-          this.optionsForms.throwMessageInfo('', 'La mascota ya se encuentra ingresada');
+          this.optionsForm.throwMessageInfo('', 'La mascota ya se encuentra ingresada');
         }
         if (error === 0){
-          this.optionsForms.throwMessageError('Algo salio mal!', '');
+          this.optionsForm.throwMessageError('Algo salio mal!', '');
         }
       });
     }

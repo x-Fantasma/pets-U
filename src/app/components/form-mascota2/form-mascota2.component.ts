@@ -53,7 +53,7 @@ export class FormMascota2Component implements OnInit {
       this.comunicacionService.sendMascota(this.mascota);
       this.router.navigate(['form-mascota3']);
     }else{
-      this.optionsForm.throwMessageInfo('', 'Complete los campos requeridos  * ');
+      this.optionsForm.throwMessageInfo('', 'Complete los campos correctamente');
     }
   }
 

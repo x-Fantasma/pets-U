@@ -7,6 +7,7 @@ import { FormMascota2Component } from './components/form-mascota2/form-mascota2.
 
 
 const routes: Routes = [
+  {path: '*', component: FormMascota1Component},
   {path: 'form-mascota1', component: FormMascota1Component},
   {path: 'form-mascota2', component: FormMascota2Component},
   {path: 'form-mascota3', component: FormMascota3Component}
