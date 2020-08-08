@@ -1,0 +1,213 @@
+:root {
+    --colorTextos: #e65a5a67;
+    background: -webkit-linear-gradient(to right, #ff00ff80, #61006180);
+    background: linear-gradient(to right, #ff00ff80, #61006180);
+}
+
+*,
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto';
+    background: -webkit-linear-gradient(to right, #61006190, #D38312);
+    background: linear-gradient(to right, #61006190, #D38312);
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 45px;
+}
+
+p {
+    font-size: 12px;
+    margin-bottom: 0;
+    margin-top: 10px;
+    border: #FF000080 solid;
+    border-radius: 0 0 5px 5px;
+    padding: 10px;
+    background-color: #FF000040;
+    display: none;
+}
+
+textarea {
+    grid-column: span 2;
+}
+
+.p-active {
+    display: block;
+}
+
+.span_ {
+    color: #c20cc280;
+}
+
+form {
+    background: #fff;
+    padding: 50px 20px 20px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    width: 55%;
+    max-width: 400px;
+    margin-top: 48px;
+    margin-bottom: 90px;
+}
+
+.form {
+    width: 100%;
+    margin: auto;
+}
+
+.form .form-grupo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+form .form-grupo .grupo {
+    position: relative;
+    margin: 45px auto;
+    width: 80%;
+}
+
+input,
+select {
+    background: none;
+    color: #00000070;
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid rgba(94, 93, 93);
+    outline: none;
+}
+
+.select {
+    padding-left: 0;
+}
+
+option {
+    color: #000;
+    box-shadow: rgba(0, 0, 0, 0.8);
+    font-size: 14px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    color: #00000090;
+}
+
+label {
+    color: #000000;
+    font-size: 16px;
+    position: absolute;
+    left: 5px;
+    top: 10px;
+    transition: 0.5s ease all;
+    pointer-events: none;
+}
+
+#label-textarea {
+    top: 5px;
+}
+
+input:focus~label,
+input:valid~label,
+select:focus~label,
+select:valid~label {
+    top: -14px;
+    font-size: 13px;
+}
+
+textarea:focus~#label-textarea,
+textarea:valid~label#label-textarea {
+    top: -22px;
+    font-size: 13px;
+}
+
+.barra {
+    position: relative;
+    display: block;
+}
+
+.barra-error {
+    position: relative;
+    display: block;
+}
+
+.barra::before {
+    content: "";
+    height: 2px;
+    width: 0%;
+    bottom: 0;
+    position: absolute;
+    background: linear-gradient(to right, #A83279, #D38312);
+    transition: 0.3s ease width;
+    left: 0;
+}
+
+.barra-error::before {
+    content: "";
+    height: 2px;
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+    background: red;
+    transition: 0.3s ease width;
+    left: 0;
+}
+
+input:focus~.barra::before,
+select:focus~.barra::before,
+textarea:focus~.barra::before {
+    width: 100%;
+}
+
+.btn-form {
+    font-family: 'Roboto';
+    background: -webkit-linear-gradient(to right, #ff00ff80, #61006190);
+    background: linear-gradient(to right, #ff00ff80, #61006190);
+    border: none;
+    border-radius: 0px 5px 5px;
+    display: inline-block;
+    width: 30%;
+    margin-right: 9px;
+    margin-left: 40px;
+    margin-bottom: 8px;
+    color: #fff;
+    height: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    position: relative;
+    outline: none;
+    box-shadow: 0 3px 3px #00000060;
+}
+
+.span-required {
+    color: red;
+}
+
+#observaciones {
+    box-sizing: border-box;
+    background: none;
+    color: #00000070;
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    min-height: 90px;
+    outline: none;
+    border: 1px solid rgba(94, 93, 93);
+    border-style: dashed;
+}

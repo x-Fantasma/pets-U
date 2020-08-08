@@ -8,13 +8,15 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormMascota2Component } from './components/form-mascota2/form-mascota2.component';
 import { FormMascota3Component } from './components/form-mascota3/form-mascota3.component';
 import { HttpErrorInterceptor } from './exceptions/http-error-interceptor';
+import { FormHistoriaClinicaComponent } from './components/form-historia-clinica/form-historia-clinica.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormMascota1Component,
     FormMascota2Component,
-    FormMascota3Component
+    FormMascota3Component,
+    FormHistoriaClinicaComponent
   ],
   imports: [
     BrowserModule,

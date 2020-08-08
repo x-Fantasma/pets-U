@@ -1,5 +1,6 @@
 import { Mascota } from './mascota';
 import Swal from 'sweetalert2';
+import { config } from 'process';
 
 export class OptionsForms {
 
@@ -26,56 +27,52 @@ export class OptionsForms {
          switch (texto) {
              case 'nroChip':
                  if (this.nroChipTest.test(mascota.nroChip) && Boolean(mascota.nroChip)) {
-                     document.getElementById('barra-nroChip').classList.remove('barra-error');
-                     document.getElementById('barra-nroChip').classList.add('barra');
-                     document.querySelector('.grupo .p-nroChip').classList.remove('p-active');
+                     this.configCase(texto, true);
                      this.valido = true;
                 }else{
-                    document.getElementById('barra-nroChip').classList.add('barra-error');
-                    document.getElementById('barra-nroChip').classList.remove('barra');
-                    document.querySelector('.grupo .p-nroChip').classList.add('p-active');
+                    this.configCase(texto, false);
                     this.valido = false;
                 }
                  break;
             case 'color':
-                    if (this.colorTest.test(mascota.color) && Boolean(mascota.color)) {
-                        document.getElementById('barra-color').classList.remove('barra-error');
-                        document.getElementById('barra-color').classList.add('barra');
-                        document.querySelector('.grupo .p-color').classList.remove('p-active');
-                        this.valido = true;
-                    }else{
-                        document.getElementById('barra-color').classList.add('barra-error');
-                        document.getElementById('barra-color').classList.remove('barra');
-                        document.querySelector('.grupo .p-color').classList.add('p-active');
-                        this.valido = false;
-                    }
-                    break;
-            case 'edad':
-                if (Boolean(mascota.edad)) {
-                    document.getElementById('barra-edad').classList.remove('barra-error');
-                    document.getElementById('barra-edad').classList.add('barra');
-                    document.querySelector('.grupo .p-edad').classList.remove('p-active');
+                if (this.colorTest.test(mascota.color) && Boolean(mascota.color)) {
+                    this.configCase(texto, true);
                     this.valido = true;
-                }else {
-                    document.getElementById('barra-edad').classList.add('barra-error');
-                    document.getElementById('barra-edad').classList.remove('barra');
-                    document.querySelector('.grupo .p-edad').classList.add('p-active');
+                }else{
+                    this.configCase(texto, false);
                     this.valido = false;
                 }
                 break;
-                case 'tamano':
-                    if (mascota.tamano !== 'Elija') {
-                        document.getElementById('barra-tamano').classList.remove('barra-error');
-                        document.getElementById('barra-tamano').classList.add('barra');
-                        document.querySelector('.grupo .p-tamano').classList.remove('p-active');
-                        this.valido = true;
-                    }else{
-                        document.getElementById('barra-tamano').classList.add('barra-error');
-                        document.getElementById('barra-tamano').classList.remove('barra');
-                        document.querySelector('.grupo .p-tamano').classList.add('p-active');
-                        this.valido = false;
-                    }
-                    break;
+            case 'edad':
+                if (Boolean(mascota.edad)) {
+                    this.configCase(texto, true);
+                    this.valido = true;
+                }else {
+                    this.configCase(texto, false);
+                    this.valido = false;
+                }
+                break;
+            case 'tamano':
+                if (mascota.tamano !== 'Elija') {
+                    this.configCase(texto, true);
+                    this.valido = true;
+                }else{
+                    this.configCase(texto, false);
+                    this.valido = false;
+                }
+                break;
+        }
+    }
+
+    configCase(text: string, isValido: boolean) {
+        if (isValido) {
+            document.getElementById('barra-' + text).classList.remove('barra-error');
+            document.getElementById('barra-' + text).classList.add('barra');
+            document.querySelector('.grupo .p-' + text).classList.remove('p-active');
+        }else {
+            document.getElementById('barra-' + text).classList.add('barra-error');
+            document.getElementById('barra-' + text).classList.remove('barra');
+            document.querySelector('.grupo .p-' + text).classList.add('p-active');
         }
     }
 
