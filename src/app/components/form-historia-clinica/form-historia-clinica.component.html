@@ -1,46 +1,62 @@
 <body>
     <form action="" method="" id="form">
         <div class="form">
-            <h1><span class="span_">H</span>istoria Clinica</h1>
-            <div class="form-grupo">
+            <h1><span class="span_">H</span>istoria <span class="span_">C</span>linica</h1>
+            <div class="column-half">
                 <div class="grupo">
-                    <div class="column-half">
-                        <select class="select" id="select-estadoR" name="estadoR" [(ngModel)]="historia.estadoReproductivo" [ngModelOptions]="{standalone: true}">
-                            <option disabled>Elija</option>
-                            <option *ngFor="let estado of estadosR">{{estado}}</option>
-                        </select>
-                        <label for="select-estadoR">Estado reproductivo <sup class="span-required">*</sup></label>
-                        <span id="barra-estadoR" class="barra"></span>
-                        <p class="p-estadoR">Seleccione el estado.</p>
-                    </div>
+                    <select class="select" id="select-estadoR" name="estadoR" [(ngModel)]="historia.estadoReproductivo" [ngModelOptions]="{standalone: true}">
+                 <option disabled>Elija</option>
+                 <option *ngFor="let estado of estadosR">{{estado}}</option>
+                </select>
+                    <label for="select-estadoR">Estado reproductivo <sup class="span-required">*</sup></label>
+                    <span id="barra-estadoR" class="barra"></span>
+                    <p class="p-estadoR">Seleccione el estado.</p>
                 </div>
                 <div class="grupo">
-                    <div class="column-half">
-                        <select class="select" id="select-condicionC" name="condicionC" [(ngModel)]="historia.condicionCorporal" [ngModelOptions]="{standalone: true}">
-                            <option disabled>Elija</option>
-                            <option *ngFor="let condicion of condicionesC">
-                                {{condicion}}
-                            </option>
-                        </select>
-                        <label for="select-condicionC">Condicion corporal <sup class="span-required">*</sup></label>
-                        <span class="barra"></span>
-                        <p class="p-condicionC">Seleccione la condicion corporal.</p>
+                    <select class="select" id="select-condicionC" name="condicionC" [(ngModel)]="historia.condicionCorporal" [ngModelOptions]="{standalone: true}">
+                  <option disabled>Elija</option>
+                  <option *ngFor="let condicion of condicionesC">
+                  {{condicion}}
+                  </option>
+                </select>
+                    <label for="select-condicionC">Condicion corporal <sup class="span-required">*</sup></label>
+                    <span class="barra"></span>
+                    <p class="p-condicionC">Seleccione la condicion corporal.</p>
+                </div>
+                <div class="grupo grupo-btn">
+                    <button type="submit" class="btn-form btn-carnet">Carnet de vacunacion</button>
+                    <div class="carnet">
+                        <div class="grupo">
+                            <label class="carnet-label">Vacunas </label>
+                        </div>
+                        <div class="grupo">
+                            <button type="submit" class="btn-form carnet-btn" (click)="saveVacuna()">Agregar</button>
+                            <button type="submit" class="btn-form carnet-btn">Listar</button>
+
+                        </div>
+                        <div id="separador">
+                            <span class="separador"></span>
+                        </div>
+                        <div class="grupo">
+                            <label class="carnet-label">Cirugias </label>
+                        </div>
+                        <div class="grupo">
+                            <button type="submit" class="btn-form carnet-btn">Agregar</button>
+                            <button type="submit" class="btn-form carnet-btn">Listar</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="grupo">
-                <div class="column-half">
-                    <button type="submit" class="btn-form">Carnet Vacunacion</button>
-                </div>
-            </div>
-            <div>
-                <div class="column-full">
+                <div class="grupo-text">
                     <textarea type="text" name="" id="observaciones" required [(ngModel)]="historia.observaciones" [ngModelOptions]="{standalone: true}"></textarea><span class="barra"></span>
                     <label id="label-textarea" for="observaciones">Observaciones</label>
                 </div>
+                <div class="column-half">
+                    <div class="btn">
+                        <button type="submit" class="btn-form">Atras</button>
+                        <button type="submit" class="btn-form">Guardar</button>
+                    </div>
+                </div>
             </div>
-            <button type="submit" class="btn-form">Atras</button>
-            <button type="submit" class="btn-form">Guardar</button>
         </div>
     </form>
 </body>

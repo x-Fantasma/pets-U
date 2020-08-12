@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HistoriaClinica } from '../../model/historia-clinica';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-form-historia-clinica',
@@ -15,6 +16,28 @@ export class FormHistoriaClinicaComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  saveVacuna() {
+    Swal.mixin({
+      progressSteps: ['1', '2']
+    }).queue([
+      {
+        title: 'Vacuna',
+        text: 'Descripcion',
+        input: 'text',
+        confirmButtonText: 'Siguiente &rarr;',
+        showCancelButton: true,
+      },
+      {
+        title: 'Vacuna',
+        text: 'Fecha',
+        input: 'text',
+        inputPlaceholder: 'dd/mm/aa',
+        confirmButtonText: 'Siguiente &rarr;',
+        showCancelButton: true,
+      }
+    ]);
   }
 
 }

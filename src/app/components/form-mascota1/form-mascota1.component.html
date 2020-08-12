@@ -12,15 +12,26 @@
                 <label for="nombre">Nombre</label>
             </div>
             <div class="radio">
-                <label for="check" id="label-can">Can</label>
-                <label for="check" id="label-felino">Felino</label>
-                <input type="checkbox" name="" id="check" required [(ngModel)]="v" [ngModelOptions]="{standalone: true}" (change)="setEspecie()"><span class="span-especie"></span>
+                <div class="grupo-half">
+                    <label for="check" id="label-can">Can</label>
+                </div>
+                <div class="grupo-half">
+                    <input type="checkbox" name="" id="check" required [(ngModel)]="v" [ngModelOptions]="{standalone: true}" (change)="setEspecie()"><span class="span-especie"></span>
+                </div>
+                <div class="grupo-half">
+                    <label for="check" id="label-felino">Felino</label>
+                </div>
             </div>
             <div class="grupo">
                 <input type="number" name="peso" id="peso" required [(ngModel)]="mascota.peso" [ngModelOptions]="{standalone: true}"><span class="barra"></span>
                 <label for="peso">Peso (Aprox.)</label>
             </div>
-            <button type="submit" class="btn-form" (click)="setDatosMascota()">Seguir</button>
+            <div class="column-half">
+                <div class="btn">
+                    <button type="submit" class="btn-form">Cancelar</button>
+                    <button type="submit" class="btn-form" (click)="setDatosMascota()">Seguir</button>
+                </div>
+            </div>
         </div>
     </form>
 </body>

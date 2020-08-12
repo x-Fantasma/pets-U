@@ -32,10 +32,11 @@ p {
     font-size: 12px;
     margin-bottom: 0;
     margin-top: 10px;
-    border: #FF000080 solid;
+    border: 1px #000 solid;
+    border-top: red solid;
     border-radius: 0 0 5px 5px;
     padding: 10px;
-    background-color: #FF000040;
+    background-color: #fff;
     display: none;
 }
 
@@ -49,12 +50,12 @@ p {
 
 form {
     background: #fff;
-    padding: 50px 0 20px;
+    padding: 50px 20px 0 20px;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
     border-radius: 10px;
-    margin-top: 48px;
-    margin-bottom: 48px;
-    max-width: 323px;
+    width: 90%;
+    max-width: 320px;
+    margin: 5% auto;
 }
 
 .form {
@@ -62,15 +63,24 @@ form {
     margin: auto;
 }
 
+.column-half {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 45px auto;
+}
+
 form .grupo {
     position: relative;
-    margin: 45px;
+    width: 90%;
+    margin: 11.5% auto;
 }
 
 form .radio {
+    display: flex;
+    flex-wrap: wrap;
     position: relative;
-    margin-left: 45px;
-    margin-right: 45px;
+    width: 90%;
+    margin: 11.5% auto;
     top: -10px;
 }
 
@@ -127,37 +137,26 @@ input:valid~label {
     left: 0;
 }
 
-.barra-error::before {
-    content: "";
-    height: 2px;
-    width: 100%;
-    bottom: 0;
-    position: absolute;
-    background: red;
-    transition: 0.3s ease width;
-    left: 0;
-}
-
-input:focus~.barra::before {
-    width: 100%;
+.btn {
+    position: relative;
+    margin: auto;
 }
 
 .btn-form {
     font-family: 'Roboto';
     background: -webkit-linear-gradient(to right, #ff00ff80, #61006190);
     background: linear-gradient(to right, #ff00ff80, #61006190);
-    display: block;
-    width: 25%;
-    margin: 8px auto;
-    color: #fff;
-    height: 30px;
-    font-size: 16px;
-    cursor: pointer;
-    position: relative;
-    outline: none;
     border: none;
     border-radius: 0px 5px 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
     box-shadow: 0 3px 3px #00000060;
+    padding: 8px 2% 8px 2%;
+    width: 80px;
+    margin-right: 5px;
+    margin-left: 5px;
 }
 
 .span-required {
@@ -191,13 +190,14 @@ input:checked~.span-especie::before {
 }
 
 #check {
-    position: relative;
-    bottom: 7px;
+    width: 10%;
     cursor: pointer;
 }
 
 #label-felino {
-    position: relative;
-    left: -8px;
-    float: right;
+    width: 40%;
+}
+
+#label-can {
+    width: 40%;
 }
