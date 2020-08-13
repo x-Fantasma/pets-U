@@ -22,9 +22,19 @@ body {
     align-items: center;
 }
 
+form {
+    background: #fff;
+    padding: 50px 20px 20px;
+    box-shadow: 0 0 6px #00000080;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 320px;
+    margin: 5% auto;
+}
+
 h1 {
     text-align: center;
-    font-weight: 500;
+    font-size: 500;
     margin-bottom: 45px;
 }
 
@@ -40,51 +50,61 @@ p {
     display: none;
 }
 
+.grupo label {
+    color: #000000;
+    font-size: 16px;
+    position: absolute;
+    left: 5px;
+    top: 10px;
+    transition: 0.5s ease all;
+    pointer-events: none;
+}
+
 .p-active {
     display: block;
 }
 
-.span_ {
+.span-text {
     color: #c20cc280;
-}
-
-form {
-    background: #fff;
-    padding: 50px 20px 0 20px;
-    box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
-    border-radius: 10px;
-    width: 90%;
-    max-width: 320px;
-    margin: 5% auto;
 }
 
 .form {
     width: 100%;
-    margin: auto;
+}
+
+.column-full {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 .column-half {
     display: flex;
     flex-wrap: wrap;
-    margin: 45px auto;
+    width: 85%;
+    margin: 20px auto;
 }
 
-form .grupo {
+.grupo {
     position: relative;
-    width: 90%;
-    margin: 11.5% auto;
+    width: 85%;
+    margin: 20px auto;
 }
 
-form .radio {
-    display: flex;
-    flex-wrap: wrap;
-    position: relative;
-    width: 90%;
-    margin: 11.5% auto;
-    top: -10px;
+.grupo-label {
+    width: 45%;
+    padding: 10px 5px 10px 5px;
 }
 
-input {
+#label-felino {
+    float: right;
+}
+
+.grupo-check {
+    margin: 10px auto;
+}
+
+.grupo input {
     background: none;
     color: #00000070;
     font-size: 18px;
@@ -95,23 +115,13 @@ input {
     border-bottom: 1px solid rgba(94, 93, 93);
 }
 
-input:focus {
+.grupo input:focus {
     outline: none;
     color: #00000090;
 }
 
-label {
-    color: #000000;
-    font-size: 16px;
-    position: absolute;
-    left: 5px;
-    top: 10px;
-    transition: 0.5s ease all;
-    pointer-events: none;
-}
-
 input:focus~label,
-input:valid~label {
+#nroChip:valid~label {
     top: -14px;
     font-size: 13px;
 }
@@ -137,7 +147,48 @@ input:valid~label {
     left: 0;
 }
 
-.btn {
+input:focus~.barra::before {
+    width: 100%;
+}
+
+.span-required {
+    color: red;
+}
+
+#separador {
+    width: 100%;
+    margin: auto;
+    position: absolute;
+}
+
+#separador {
+    content: "";
+    position: relative;
+    left: -850%;
+    width: 1825%;
+}
+
+#separador::after {
+    content: "";
+    height: 2px;
+    position: absolute;
+    bottom: 0;
+    background: linear-gradient(to right, #A83279, #D38312);
+    transition: 0.3s ease width;
+    left: 0;
+}
+
+input:not(checked)~#separador::after {
+    transition: 0.3s;
+    width: 50%;
+}
+
+input:checked~#separador::after {
+    margin-left: 50%;
+    width: 50%;
+}
+
+.grupo-btn {
     position: relative;
     margin: auto;
 }
@@ -157,47 +208,4 @@ input:valid~label {
     width: 80px;
     margin-right: 5px;
     margin-left: 5px;
-}
-
-.span-required {
-    color: red;
-}
-
-.span-especie {
-    position: relative;
-    display: block;
-    margin-top: 10px;
-}
-
-.span-especie::before {
-    content: "";
-    height: 2px;
-    bottom: 0;
-    position: absolute;
-    background: linear-gradient(to right, #A83279, #D38312);
-    transition: 0.3s ease width;
-    left: 0;
-}
-
-input:not(checked)~.span-especie::before {
-    transition: 0.3s;
-    width: 45%;
-}
-
-input:checked~.span-especie::before {
-    margin-left: 56%;
-    width: 45%;
-}
-
-#check {
-    width: 10%;
-    cursor: pointer;
-}
-
-#label-felino {
-    width: 40%;
-}
-
-#label-can {
-    width: 40%;
 }
